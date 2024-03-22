@@ -11,7 +11,7 @@ namespace APIsAndJSON
             var kanyeURL = "https://api.kanye.rest/";
             var ronURL = "https://ron-swanson-quotes.herokuapp.com/v2/quotes";
 
-            int timer = 10;
+            int timer = 6;
 
             do
             {
@@ -20,8 +20,6 @@ namespace APIsAndJSON
 
                 var ronResponse = client.GetStringAsync(ronURL).Result;
                 var ronQuote = JArray.Parse(ronResponse).ToString().Replace('[', ' ').Replace(']', ' ').Replace('"', ' ').Trim();
-
-                Console.WriteLine("\n");
 
                 Thread.Sleep(1500);
                 Console.WriteLine("Kanye: ");
@@ -41,13 +39,9 @@ namespace APIsAndJSON
                     Thread.Sleep(10);
                 }
 
+                Console.WriteLine("\n");
 
-                // Console.WriteLine($"Kanye:\n{kanyeQuote}\n");
-
-                //Thread.Sleep(2000);
-                //Console.WriteLine($"Ron:\n{ronQuote}\n");
-
-                timer++; 
+                timer--; 
             
             } while (timer > 0);
 
